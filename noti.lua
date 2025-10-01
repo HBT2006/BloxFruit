@@ -264,9 +264,14 @@ spawn(function()
                             },
                             Body = game:GetService("HttpService"):JSONEncode(payloadSea2)
                         })
-                    end
-                    if not HaveRareBoss(v) and table.find(save, v) then
-                        save[i] = nil
+                    elseif not HaveRareBoss(v) and table.find(save, v) then
+                        -- Remove boss from save array when it's no longer present
+                        for j = #save, 1, -1 do
+                            if save[j] == v then
+                                table.remove(save, j)
+                                break
+                            end
+                        end
                     end
                 end
     
@@ -293,9 +298,14 @@ spawn(function()
                             },
                             Body = game:GetService("HttpService"):JSONEncode(payloadRare)
                         })
-                    end
-                    if not HaveRareBoss(v) and table.find(save, v) then
-                        save[i] = nil
+                    elseif not HaveRareBoss(v) and table.find(save, v) then
+                        -- Remove boss from save array when it's no longer present
+                        for j = #save, 1, -1 do
+                            if save[j] == v then
+                                table.remove(save, j)
+                                break
+                            end
+                        end
                     end
                 end
     
@@ -322,16 +332,21 @@ spawn(function()
                             },
                             Body = game:GetService("HttpService"):JSONEncode(payloadNormal)
                         })
-                    end
-                    if not HaveRareBoss(v) and table.find(save, v) then
-                        save[i] = nil
+                    elseif not HaveRareBoss(v) and table.find(save, v) then
+                        -- Remove boss from save array when it's no longer present
+                        for j = #save, 1, -1 do
+                            if save[j] == v then
+                                table.remove(save, j)
+                                break
+                            end
+                        end
                     end
                 end
                 _print(20)
                 if HavePrehistoricIsland() and not toibingu then
                     toibingu = 1
                     _print("SENT PREHISTORIC ISLAND")
-                    anat("Prehistoric", "island", game.JobId)
+                    anat("Prehistoric", "Island", game.JobId)
                     local payloadPrehistocricIsland = {
                         ["JobId"] = tostring(game.JobId),
                         ["Players"] = game.Players.NumPlayers .. "/" .. game.Players.MaxPlayers,
@@ -354,7 +369,7 @@ spawn(function()
                 if getmirage() and not miragesent then
                     _print("SEND MIRAGE")
                     miragesent = true
-                    anat("Mirage", "island", game.JobId)
+                    anat("Mirage", "Island", game.JobId)
                     local payloadmirage = {
                         ["JobId"] = tostring(game.JobId),
                         ["Players"] = game.Players.NumPlayers .. "/" .. game.Players.MaxPlayers,
@@ -376,7 +391,7 @@ spawn(function()
                 _print(40)
                 if isrealmoon() and getfm() == "Full Moon" then
                     if os.time() - ( LAstSend or 0 ) < 1200 then continue end
-                    anat("Full", "moon", game.JobId)
+                    anat("Full", "Moon", game.JobId)
                     local payloadmoon = {
                         ["JobId"] = tostring(game.JobId),
                         ["Players"] = game.Players.NumPlayers .. "/" .. game.Players.MaxPlayers,
@@ -403,7 +418,7 @@ spawn(function()
                     castleSent = true
                     lastCastleNotification = os.time()
                     _print("SENT CASTLE")
-                    anat("Castle", "raid", game.JobId)
+                    anat("Castle", "Raid", game.JobId)
                     local payloadCastle = {
                         ["JobId"] = tostring(game.JobId),
                         ["Players"] = game.Players.NumPlayers .. "/" .. game.Players.MaxPlayers,
@@ -450,9 +465,14 @@ spawn(function()
                             },
                             Body = game:GetService("HttpService"):JSONEncode(payloadElite)
                         })
-                    end
-                    if not HaveRareBoss(v) and table.find(save, v) then
-                        save[i] = nil
+                    elseif not HaveRareBoss(v) and table.find(save, v) then
+                        -- Remove boss from save array when it's no longer present
+                        for j = #save, 1, -1 do
+                            if save[j] == v then
+                                table.remove(save, j)
+                                break
+                            end
+                        end
                     end
                 end
                 
